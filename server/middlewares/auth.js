@@ -1,5 +1,4 @@
 import {clerkClient} from "@clerk/express";
-import {use} from "express/lib/application.js";
 
 /** this is middleware to check userID and hasPremium plan of user registered to clerk */
 
@@ -27,7 +26,7 @@ export const auth = async (req, res, next) =>{
         }catch (error){
             res.json({
                 success : false,
-                message : error.message
+                message : `error message from authJS : ${error.message}`
             })
         }
 }

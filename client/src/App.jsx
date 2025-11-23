@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route,  Routes } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Layout from "./pages/Layout.jsx";
@@ -10,12 +10,20 @@ import RemoveBackground from "./pages/RemoveBackground.jsx";
 import RemoveObject from "./pages/RemoveObject.jsx";
 import ReviewResume from "./pages/ReviewResume.jsx";
 import Community from "./pages/Community.jsx";
+import {useAuth} from "@clerk/clerk-react";
 
 
 
 
 
 const App = () => {
+
+    const {getToken} = useAuth()
+    useEffect(() => {
+        getToken().then((token)=>console.log(token)) }    /** this get token will get executed when this component will get loaded */
+    , [])
+
+
   return (
     <div>
         <Routes>
